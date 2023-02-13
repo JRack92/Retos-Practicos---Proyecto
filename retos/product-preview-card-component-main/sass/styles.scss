@@ -1,0 +1,140 @@
+@use "base" as *;
+@use "variables" as *;
+@use "mixxis" as *;
+
+.Section__Card {
+  @include CentreElementoToScreen;
+  background-color: $Color-Cream;
+  border-radius: 1rem;
+
+  width: 90%;
+  height: 90%;
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+  .Card {
+    @include CentreElementoToScreen;
+    background-color: $Color-White;
+
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    border-radius: 1rem;
+
+    width: 30rem;
+    height: 55rem;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    gap: 0;
+
+    img {
+      margin: 0 auto;
+      width: 100%;
+      height: auto;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+
+    .Card__Info {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      .Card__Info_Category {
+        text-transform: uppercase;
+        font-size: 1rem;
+        padding-bottom: 1.5rem;
+        letter-spacing: 0.5rem;
+        font-family: $FontFamily-Montserrat;
+        font-weight: 500;
+        color: $Color-Dark-Grayish-Blue;
+      }
+
+      .Card__Info_Title {
+        font-size: 2.8rem;
+        line-height: 2.7rem;
+        font-family: $FontFamily-Fraunces;
+        font-weight: 700;
+        padding-bottom: 1.5rem;
+      }
+
+      .Card__Info_Text {
+        line-height: $FontSize-P * 1.5;
+        font-size: $FontSize-P;
+        font-family: $FontFamily-Montserrat;
+        font-weight: 500;
+        padding-bottom: 2rem;
+        color: $Color-Dark-Grayish-Blue;
+      }
+
+      .Card__Info_Precie {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 2rem;
+        align-items: center;
+        gap: 2rem;
+
+        .Precie_New {
+          color: $Color-Dark-Cyan;
+          font-size: 2.5rem;
+          font-family: $FontFamily-Fraunces;
+          font-weight: 500;
+        }
+
+        .Precie_Old {
+          font-family: $FontFamily-Montserrat;
+          color: $Color-Dark-Grayish-Blue;
+          text-decoration: line-through;
+        }
+      }
+
+      button {
+        background-color: $Color-Dark-Cyan;
+        color: $Color-White;
+        font-family: $FontFamily-Fraunces;
+        font-weight: 700;
+        border-radius: 1rem;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        &:hover {
+            background-color: $Color-Very-Dark-Blue;
+        }
+
+        .iconCar {
+          background: url("../asset/icon-cart.svg") no-repeat 50% 50%;
+          background-size: 18px 18px;
+          display: inline-block;
+          height: 18px;
+          width: 18px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .Section__Card {
+    height: 60%;
+    .Card {
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr;
+      width: 50rem;
+      height: 39rem;
+      img {
+        height: 100%;
+        border-top-right-radius: 0rem;
+        border-end-start-radius: 1rem;
+      }
+    }
+  }
+}
