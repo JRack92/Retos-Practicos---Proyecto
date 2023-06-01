@@ -1,0 +1,22 @@
+@use "../util/vars"as *;
+
+stage-card {
+    background-color: $color3;
+    border-radius: 1rem;
+
+    width: 256px;
+    height: 300px;
+}
+
+.StageCard {
+    & h3.title {
+        font-size: 3rem;
+        font-family: $font-principal;
+        color: $color5;
+    }
+
+    & p {
+        color: $color4;
+        font-family: $font-secundaria;
+    }
+}
