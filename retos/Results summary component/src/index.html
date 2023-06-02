@@ -13,42 +13,54 @@
     />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
-  <body class="font-haken bg-gray-100 py-8">
-    <section
-      class="w-[90%] max-w-md mx-auto bg-White shadow-2xl md:flex md:rounded-2xl md:max-w-4xl"
+  <body class="font-haken bg-gray-100">
+    <main
+      class="w-[90%] h-[90%] absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2"
     >
-      <article
-        class="bg-gradient-to-b from-light-slate-blue to-light-royal-blue rounded-b-2xl p-10 text-White text-center md:rounded-2xl md:w-1/2 md:grid md:content-center"
-      >
-        <p class="text-xl font-bold text-light-lavender">Your Result</p>
-        <div
-          class="w-36 bg-gradient-to-b from-violet-blue to-persian-blue rounded-full mx-auto my-8 aspect-square grid content-center md:w-56"
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto">
+        <section
+          class="w-[90%] max-w-md mx-auto bg-White shadow-2xl md:flex md:rounded-2xl md:max-w-4xl"
         >
-          <p class="text-5xl font-bold mb-2 md:text-7xl">76</p>
-          <p class="font-bold text-light-lavender">of 100</p>
-        </div>
-        <h3 class="text-3xl mb-4 font-bold">Great</h3>
-        <p class="text-light-lavender">
-          You scored higher than 65% of the people who have taken these tests.
-        </p>
-      </article>
-      <article class="p-10 grid gap-6 md:w-1/2">
-        <h3 class="text-xl font-bold">Summary</h3>
-        <div id="SummaryList" class="grid gap-6"></div>
-        <a
-          href=""
-          class="bg-dark-gray-blue text-White rounded-full py-5 text-center hover:bg-gradient-to-b from-light-slate-blue to-light-royal-blue"
-          >Continue</a
-        >
-      </article>
-    </section>
+          <article
+            class="bg-gradient-to-b from-light-slate-blue to-light-royal-blue rounded-b-2xl p-10 text-White text-center md:rounded-2xl md:w-1/2 md:grid md:content-center"
+          >
+            <p class="text-xl font-bold text-light-lavender">Your Result</p>
+            <div
+              class="w-36 bg-gradient-to-b from-violet-blue to-persian-blue rounded-full mx-auto my-8 aspect-square grid content-center md:w-56"
+            >
+              <p class="text-5xl font-bold mb-2 md:text-7xl">76</p>
+              <p class="font-bold text-light-lavender">of 100</p>
+            </div>
+            <h3 class="text-3xl mb-4 font-bold">Great</h3>
+            <p class="text-light-lavender">
+              You scored higher than 65% of the people who have taken these
+              tests.
+            </p>
+          </article>
+          <article class="p-10 grid gap-6 md:w-1/2">
+            <h3 class="text-xl font-bold">Summary</h3>
+            <div id="SummaryList" class="grid gap-6"></div>
+            <a
+              href=""
+              class="bg-dark-gray-blue text-White rounded-full py-5 text-center hover:bg-gradient-to-b from-light-slate-blue to-light-royal-blue"
+              >Continue</a
+            >
+          </article>
+        </section>
 
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io/challenges/results-summary-component-CE_K6s0maV" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="https://www.linkedin.com/in/jorgecarrilloo/" target="_blank">Jorge Carrillo O</a>.
-    </div>
+        <div class="attribution">
+          Challenge by
+          <a
+            href="https://www.frontendmentor.io/challenges/results-summary-component-CE_K6s0maV"
+            target="_blank"
+            >Frontend Mentor</a
+          >. Coded by
+          <a href="https://www.linkedin.com/in/jorgecarrilloo/" target="_blank"
+            >Jorge Carrillo O</a
+          >.
+        </div>
+      </div>
+    </main>
 
     <script type="module" src="./js/index.js"></script>
   </body>
