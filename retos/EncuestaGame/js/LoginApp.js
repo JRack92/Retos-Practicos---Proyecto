@@ -26,7 +26,7 @@ function print_LoginApp() {
     <div class="Login">
         <form id="loginForm">
             <div>
-                <label for="userEmail">Email del usuario:</label>
+                <label for="userEmail">Email:</label>
                 <input type="email" id="userEmail" name="userEmail" required>
             </div>
             
@@ -59,6 +59,8 @@ function print_LoginApp() {
 
   createUserElement.addEventListener("click", () => {
     console.log("Create User");
+
+    //Crear una nueva cuenta
     createUserWithEmailAndPassword(auth, _userEmail, _userPass)
       .then((userCredential) => {
         _user = userCredential.user;
@@ -75,6 +77,7 @@ function print_LoginApp() {
     event.preventDefault();
     console.log("Login");
 
+    //Inicia sección con la cuenta indicada
     signInWithEmailAndPassword(auth, _userEmail, _userPass)
       .then((userCredential) => {
         _user = userCredential.user;

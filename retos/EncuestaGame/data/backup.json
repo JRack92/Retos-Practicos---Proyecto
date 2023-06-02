@@ -471,21 +471,23 @@
       }
     },
     "Users": {
-      "uKrHooP1Q0gSdrM7kiomoekkyfJ3": {
+      "Vy8FQDWpCkQDvwA6xd9HEHs96ZE3": {
         "Email": "rack1992@gmail.com",
-        "StagesState": [
-          {
-            "StageId": 0,
-            "Completado": false,
-            "listQuestionsState": [
-              {
-                "number": 1,
-                "Completada": false,
-                "RespondidaCorrectamente": false
+        "__collections__": {
+          "Stages": {
+            "0": {
+              "Complete": false,
+              "__collections__": {
+                "listQuestions": {
+                  "0": {
+                    "Complete": true,
+                    "__collections__": {}
+                  }
+                }
               }
-            ]
+            }
           }
-        ]
+        }
       }
     }
   }

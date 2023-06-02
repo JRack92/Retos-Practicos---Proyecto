@@ -1,4 +1,5 @@
 import { getFirestore, getDoc, doc } from "firebase/firestore";
+import { SaveQuestion, SaveStage } from "./StageCardContainer";
 
 let _stageCardContainer = "";
 let _stageView = "";
@@ -27,7 +28,7 @@ function print_StageView() {
   if (!_stageView) _stageView = document.querySelector(".StageView");
 
   let innerHtml_ListQuestion = "";
-  console.log(`_currentIndexQuestion => ${_currentIndexQuestion}`);
+  // console.log(`_currentIndexQuestion => ${_currentIndexQuestion}`);
   const currentQuestion = _stageData.listQuestions[_currentIndexQuestion];
   const answerCorrect = GetAnswerCorrect(currentQuestion.answers);
   const radioName = `AnswerQuestion${currentQuestion.number}`;
@@ -76,6 +77,8 @@ function print_StageView() {
     if (resultAlertElement)
       resultAlertElement.classList.toggle("hidden", result);
 
+    SaveQuestion(_currentIndexQuestion, result);
+
     if (result) LoadNextQuestion();
   });
 }
@@ -88,6 +91,7 @@ function LoadNextQuestion() {
     print_StageView();
   } else {
     // console.log("Stage terminado");
+    SaveStage(true);
     HiddenStageView();
     _currentIndexQuestion = 0;
   }
