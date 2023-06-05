@@ -1,27 +1,30 @@
-import { getFirestore, getDoc, doc } from "firebase/firestore";
-import { SaveQuestion, SaveStage } from "./StageCardContainer";
+import {
+  SaveStage,
+  SaveQuestion,
+  GetStageData,
+  GetCurrentStageData,
+} from "../firebase/dbConnect";
 
 let _stageCardContainer = "";
 let _stageView = "";
 
-let _stageID;
+let _currentStageID;
 let _stageData;
 
 let _currentIndexQuestion = 0;
 
-export function SelectedStage(stageID) {
-  _stageID = stageID;
+export function SelectedStage(currentStageID) {
+  _currentStageID = currentStageID;
 
-  const fireStoreDB = getFirestore();
-  const fireStoreDoc = doc(fireStoreDB, "Stages", _stageID);
-
-  getDoc(fireStoreDoc).then((res) => {
-    _stageData = { id: res.id, ...res.data() };
-    print_StageView();
-  });
+  GetStageData(LoadStageData, _currentStageID);
 }
 
-function print_StageView() {
+function LoadStageData() {
+  _stageData = GetCurrentStageData();
+  Print_StageView();
+}
+
+function Print_StageView() {
   if (!_stageCardContainer)
     _stageCardContainer = document.querySelector(".StageCardContainer");
 
@@ -77,7 +80,7 @@ function print_StageView() {
     if (resultAlertElement)
       resultAlertElement.classList.toggle("hidden", result);
 
-    SaveQuestion(_currentIndexQuestion, result);
+    SaveQuestion(_currentIndexQuestion, result, _currentStageID);
 
     if (result) LoadNextQuestion();
   });
@@ -88,10 +91,10 @@ function LoadNextQuestion() {
 
   if (_currentIndexQuestion < _stageData.listQuestions.length) {
     // console.log("Siguiente pregunta");
-    print_StageView();
+    Print_StageView();
   } else {
     // console.log("Stage terminado");
-    SaveStage(true);
+    SaveStage(true, _currentStageID);
     HiddenStageView();
     _currentIndexQuestion = 0;
   }

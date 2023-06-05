@@ -472,7 +472,11 @@
     },
     "Users": {
       "Vy8FQDWpCkQDvwA6xd9HEHs96ZE3": {
-        "Email": "rack1992@gmail.com",
+        "Stages": [
+          {
+            "Complete": false
+          }
+        ],
         "__collections__": {
           "Stages": {
             "0": {
@@ -480,6 +484,18 @@
               "__collections__": {
                 "listQuestions": {
                   "0": {
+                    "Complete": true,
+                    "__collections__": {}
+                  },
+                  "1": {
+                    "Complete": true,
+                    "__collections__": {}
+                  },
+                  "2": {
+                    "Complete": true,
+                    "__collections__": {}
+                  },
+                  "3": {
                     "Complete": true,
                     "__collections__": {}
                   }

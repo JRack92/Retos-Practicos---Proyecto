@@ -1,50 +1,22 @@
 import "./StageCard";
 import { SelectedStage } from "./StageView";
-import {
-  getFirestore,
-  getDocs,
-  collection,
-  doc,
-  setDoc,
-} from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { GetListStage, SaveStage } from "../firebase/dbConnect";
 
 let _currentStageID = "";
 let _stageCardContainer = "";
 let _stageView = "";
 
-let db;
-let dbCollection;
-let auth;
-let user;
-
-export function LoadStages() {
-  db = getFirestore();
-  auth = getAuth();
-  user = auth.currentUser;
-  dbCollection = collection(db, "Stages");
-
-  // console.log(auth);
-  // console.log(user);
-
-  getDocs(dbCollection).then((res) => {
-    const listStage = res.docs.map((stage) => ({
-      id: stage.id,
-      ...stage.data(),
-    }));
-    printStageContainer(listStage);
-    AddEventOnClick_ListStageCard();
-  });
+export async function LoadStages() {
+  GetListStage(PrintStageContainer);
 }
 
-function printStageContainer(stages) {
-  console.log("Entrada");
+function PrintStageContainer(listStages) {
   let innerHtmlStageCard = "";
   _stageCardContainer = document.querySelector(".StageCardContainer");
   _stageView = document.querySelector(".StageView");
 
   //Crea los Stages en el DOM
-  stages.forEach((data) => {
+  listStages.forEach((data) => {
     innerHtmlStageCard += `
         <stage-card 
         stageId="${data.id}" 
@@ -56,6 +28,8 @@ function printStageContainer(stages) {
   });
   // console.log(innerHtmlStageCard)
   _stageCardContainer.innerHTML = innerHtmlStageCard;
+
+  AddEventOnClick_ListStageCard();
 }
 
 function AddEventOnClick_ListStageCard() {
@@ -69,8 +43,8 @@ function AddEventOnClick_ListStageCard() {
   });
 }
 
-/**
- * Evento Click del StageCard
+/** Evento Click del StageCard
+ * 
  * @param {Element} stageCard - Elemento del DOM del StageCard
  */
 function OnClick_StageCard(stageCard) {
@@ -81,33 +55,7 @@ function OnClick_StageCard(stageCard) {
   _stageView.classList.remove("hidden");
 
   SelectedStage(_currentStageID);
-  SaveStage(false);
-}
 
-/**
- * Se guarda el Stage al usuario
- * @param {boolean} stageComplete - Se indica si el Stage ya fue completado en su totalidad
- */
-export async function SaveStage(stageComplete) {
-  await setDoc(doc(db, `Users/${user.uid}/Stages`, _currentStageID), {
-    Complete: stageComplete,
-  });
-}
-
-/**
- * Se guarda la pregunta del Stage actual al usuario
- * @param {string} id - id de la pregunta
- * @param {boolean} stateComplete - Se indica si la pregunta ya fue completa correctamente.
- */
-export async function SaveQuestion(id, stateComplete) {
-  await setDoc(
-    doc(
-      db,
-      `Users/${user.uid}/Stages/${_currentStageID}/listQuestions`,
-      id.toString()
-    ),
-    {
-      Complete: stateComplete,
-    }
-  );
+  //El false inicial toca cambiarlo por primero verificar que ya esta el stage completado o no
+  SaveStage(false, _currentStageID);
 }

@@ -1,20 +1,12 @@
-import { async } from "@firebase/util";
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+  CreateUserWithEmailAndPassword,
+  SignInWithEmailAndPassword,
+} from "./firebase/dbConnect";
 
 import { LoadStages } from "./Stage/StageCardContainer";
 
-const auth = getAuth();
-const db = getFirestore();
-
 let _loginAppElement = "";
 
-let _user;
 let _userEmail;
 let _userPass;
 
@@ -58,52 +50,25 @@ function print_LoginApp() {
   });
 
   createUserElement.addEventListener("click", () => {
-    console.log("Create User");
-
-    //Crear una nueva cuenta
-    createUserWithEmailAndPassword(auth, _userEmail, _userPass)
-      .then((userCredential) => {
-        _user = userCredential.user;
-        CreateUser();
-        LoadStages();
-        ShowApp();
-      })
-      .catch((error) => {
-        ConsoleLog_ErrorAuth(error);
-      });
+    CreateUserWithEmailAndPassword(_userEmail, _userPass, CallBackLogin);
   });
 
   formElement.addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log("Login");
-
-    //Inicia sección con la cuenta indicada
-    signInWithEmailAndPassword(auth, _userEmail, _userPass)
-      .then((userCredential) => {
-        _user = userCredential.user;
-        LoadStages();
-        ShowApp();
-      })
-      .catch((error) => {
-        ConsoleLog_ErrorAuth(error);
-      });
+    SignInWithEmailAndPassword(_userEmail, _userPass, CallBackLogin);
   });
 }
 
-function ConsoleLog_ErrorAuth(error) {
-  console.log(error);
-  console.log(`Error Code => ${error.code}`);
-  console.log(`Error Message => ${error.message}`);
+/**
+ * Métodos llamados cuando se hace Login del usuario
+ */
+function CallBackLogin() {
+  LoadStages();
+  ShowApp();
 }
 
 function ShowApp() {
   _loginAppElement.classList.add("hidden");
   document.getElementById("app").classList.remove("hidden");
   document.querySelector(".StageCardContainer").classList.remove("hidden");
-}
-
-async function CreateUser() {
-  await setDoc(doc(db, "Users", _user.uid), {
-    Email: _user.email,
-  });
 }
