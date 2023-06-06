@@ -7,6 +7,8 @@ import {
   getDoc,
   collection,
   getDocs,
+  query,
+  where,
 } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 import {
@@ -41,7 +43,12 @@ const _collectionStage = collection(_db, "Stages");
 
 // Vars App
 let _listStage;
+let _userListStage;
 let _currentStageData;
+
+export function GetUserListStage() {
+  return _userListStage;
+}
 
 export function GetCurrentStageData() {
   return _currentStageData;
@@ -60,6 +67,12 @@ export function GetDb() {
   return _db;
 }
 
+/** Crea un nuevo usuario con Email y Pass en Firebase
+ *
+ * @param {string} userEmail - Email del usuario nuevo
+ * @param {string} userPass - Pass del usuario nuevo
+ * @param {function} callBack - callback que se ejecuta al terminar la creación
+ */
 export function CreateUserWithEmailAndPassword(userEmail, userPass, callBack) {
   console.log("Create User");
   //Crear una nueva cuenta
@@ -74,6 +87,12 @@ export function CreateUserWithEmailAndPassword(userEmail, userPass, callBack) {
     });
 }
 
+/** inicia usuario con Email y Pass de Firebase
+ *
+ * @param {string} userEmail - Email del usuario
+ * @param {string} userPass - Pass del usuario
+ * @param {function} callBack - callback que se ejecuta al terminar la carga
+ */
 export function SignInWithEmailAndPassword(userEmail, userPass, callBack) {
   console.log("Login");
   //Inicia sección con la cuenta indicada
@@ -105,6 +124,8 @@ async function CreateUser(uid, email) {
  * @param {function} callbackPrinter - Callback que recibe la lista para dibujarla
  */
 export function GetListStage(callbackPrinter) {
+  LoadUserListStage();
+
   getDocs(_collectionStage).then((res) => {
     _listStage = res.docs.map((stage) => ({
       id: stage.id,
@@ -128,31 +149,49 @@ export function GetStageData(callBack, stageId) {
   });
 }
 
+/** Retorna la lista de Stage del usuario
+ *
+ * @param {function} callBack - Callback que recibe la Lista de Stage del usuario
+ */
+export function LoadUserListStage() {
+  const refDoc = query(
+    collection(_db, `Users/${GetCurrentUser().uid}/Stages`),
+    where(`Complete`, "==", true)
+  );
+
+  getDocs(refDoc).then((res) => {
+    _userListStage = res.docs.map((stage) => ({
+      id: stage.id,
+      ...stage.data(),
+    }));
+  });
+}
+
 /** Se guarda el Stage al usuario
  *
  * @param {boolean} stageComplete - Se indica si el Stage ya fue completado en su totalidad
+ * @param {string} currentStageID - ID del Stage actual
  */
 export async function SaveStage(stageComplete, currentStageID) {
-  await setDoc(doc(_db, `Users/${GetCurrentUser().uid}/Stages`, currentStageID), {
-    Complete: stageComplete,
-  });
-
-  // await setDoc(doc(_db, `Users/${user.uid}`, "StageV2"), {
-  //   Id: _currentStageID,
-  //   Complete: stageComplete,
-  // });
+  await setDoc(
+    doc(_db, `Users/${GetCurrentUser().uid}/Stages`, currentStageID),
+    {
+      Complete: stageComplete,
+    }
+  );
 }
 
 /** Se guarda la pregunta del Stage actual al usuario
- * @param {string} id - id de la pregunta
+ * @param {string} idQuestion - ID de la pregunta
  * @param {boolean} stateComplete - Se indica si la pregunta ya fue completa correctamente.
+ * @param {string} currentStageID - ID del Stage Actual
  */
-export async function SaveQuestion(id, stateComplete, currentStageID) {
+export async function SaveQuestion(idQuestion, stateComplete, currentStageID) {
   await setDoc(
     doc(
       _db,
       `Users/${GetCurrentUser().uid}/Stages/${currentStageID}/listQuestions`,
-      id.toString()
+      idQuestion.toString()
     ),
     {
       Complete: stateComplete,

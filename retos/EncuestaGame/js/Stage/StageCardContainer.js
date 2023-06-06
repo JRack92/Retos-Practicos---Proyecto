@@ -1,6 +1,10 @@
 import "./StageCard";
 import { SelectedStage } from "./StageView";
-import { GetListStage, SaveStage } from "../firebase/dbConnect";
+import {
+  GetListStage,
+  SaveStage,
+  GetUserListStage,
+} from "../firebase/dbConnect";
 
 let _currentStageID = "";
 let _stageCardContainer = "";
@@ -12,13 +16,25 @@ export async function LoadStages() {
 
 function PrintStageContainer(listStages) {
   let innerHtmlStageCard = "";
+  const userListStage = GetUserListStage();
+
+  console.log(userListStage);
+
   _stageCardContainer = document.querySelector(".StageCardContainer");
   _stageView = document.querySelector(".StageView");
 
   //Crea los Stages en el DOM
   listStages.forEach((data) => {
+    const userStage = userListStage.find((stage) => stage.id === data.id);
+    let styleStageComplete = "Nocomplete";
+
+    if (userStage && userStage.Complete) {
+      console.log(`userStage => ${userStage.Complete}`);
+      styleStageComplete = "complete";
+    }
+
     innerHtmlStageCard += `
-        <stage-card 
+        <stage-card class="${styleStageComplete}"
         stageId="${data.id}" 
         name="${data.name}" 
         info="${data.info}" 
@@ -44,7 +60,7 @@ function AddEventOnClick_ListStageCard() {
 }
 
 /** Evento Click del StageCard
- * 
+ *
  * @param {Element} stageCard - Elemento del DOM del StageCard
  */
 function OnClick_StageCard(stageCard) {
