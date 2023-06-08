@@ -4,8 +4,3 @@
 // @use "./components/StageCard"as *;
 @use "./components/StageView"as *;
 
-.StageCard {
-    &.complete {
-        filter: saturate(2);
-    }
-}

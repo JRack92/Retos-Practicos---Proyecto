@@ -5,6 +5,8 @@ import {
   GetCurrentStageData,
 } from "../firebase/dbConnect";
 
+import { StageCardComplete } from "./StageCardContainer";
+
 let _stageCardContainer = "";
 let _stageView = "";
 
@@ -94,6 +96,7 @@ function LoadNextQuestion() {
     Print_StageView();
   } else {
     // console.log("Stage terminado");
+    StageCardComplete();
     SaveStage(true, _currentStageID);
     HiddenStageView();
     _currentIndexQuestion = 0;

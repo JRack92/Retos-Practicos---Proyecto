@@ -9,6 +9,8 @@ import {
 let _currentStageID = "";
 let _stageCardContainer = "";
 let _stageView = "";
+let _currentStageCard;
+const _stageCardCompleteStyleName = "complete";
 
 export async function LoadStages() {
   GetListStage(PrintStageContainer);
@@ -30,7 +32,7 @@ function PrintStageContainer(listStages) {
 
     if (userStage && userStage.Complete) {
       console.log(`userStage => ${userStage.Complete}`);
-      styleStageComplete = "complete";
+      styleStageComplete = _stageCardCompleteStyleName;
     }
 
     innerHtmlStageCard += `
@@ -48,14 +50,17 @@ function PrintStageContainer(listStages) {
   AddEventOnClick_ListStageCard();
 }
 
+/** Agrega el evento Click al StageCard que no este completado aun */
 function AddEventOnClick_ListStageCard() {
   const listStageCard = document.querySelectorAll("stage-card");
 
   listStageCard.forEach(function (stageCard) {
     //Se agrega el evento click al StageCard
-    stageCard.addEventListener("click", function () {
-      OnClick_StageCard(stageCard);
-    });
+    if (stageCard.className !== _stageCardCompleteStyleName) {
+      stageCard.addEventListener("click", function () {
+        OnClick_StageCard(stageCard);
+      });
+    }
   });
 }
 
@@ -64,14 +69,24 @@ function AddEventOnClick_ListStageCard() {
  * @param {Element} stageCard - Elemento del DOM del StageCard
  */
 function OnClick_StageCard(stageCard) {
-  _currentStageID = stageCard.getAttribute("stageId");
-  const stageName = stageCard.getAttribute("name");
+  //TO-DO:Puede haber una mejor solución para este punto
+  console.log(stageCard.className !== _stageCardCompleteStyleName);
+  if (stageCard.className !== _stageCardCompleteStyleName) {
+    _currentStageCard = stageCard;
+    _currentStageID = stageCard.getAttribute("stageId");
+    const stageName = stageCard.getAttribute("name");
 
-  _stageCardContainer.classList.add("hidden");
-  _stageView.classList.remove("hidden");
+    _stageCardContainer.classList.add("hidden");
+    _stageView.classList.remove("hidden");
 
-  SelectedStage(_currentStageID);
+    SelectedStage(_currentStageID);
 
-  //El false inicial toca cambiarlo por primero verificar que ya esta el stage completado o no
-  SaveStage(false, _currentStageID);
+    //El false inicial toca cambiarlo por primero verificar que ya esta el stage completado o no
+    SaveStage(false, _currentStageID);
+  }
+}
+
+export function StageCardComplete() {
+  _currentStageCard.classList.add(_stageCardCompleteStyleName);
+  // _currentStageCard.removeEventListener("click");
 }
