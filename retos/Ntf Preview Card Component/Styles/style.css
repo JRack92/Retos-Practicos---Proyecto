@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap");
+
+:root {
+  --SoftBlue: hsl(215, 51%, 70%);
+  --Cyan: hsl(178, 100%, 50%);
+  --CyanTransparent: hsla(178, 100%, 50%, 25%);
+
+  --VeryDarkBlue-MainBG: hsl(217, 54%, 11%);
+  --VeryDarkBlue-CardBG: hsl(216, 50%, 16%);
+  --VeryDarkBlue-Line: hsl(215, 32%, 27%);
+  --White: hsl(0, 0%, 100%);
+}
+
+* {
+  font-size: 18px;
+  font-family: "Outfit", sans-serif;
+  color: var(--White);
+}
+
+body {
+  background-color: var(--VeryDarkBlue-MainBG);
+}
+
+.NTFContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 337px;
+  margin: 0 auto;
+}
+
+.Card {
+  background-color: var(--VeryDarkBlue-CardBG);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.Card .Card__Image {
+  position: relative;
+}
+
+.Card__Image img {
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.Card .Card__ImageHover {
+  opacity: 0;
+  background-color: var(--CyanTransparent);
+  border-radius: 0.5rem;
+
+  width: 283px;
+  height: 283px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Card__ImageHover img {
+  width: 64px;
+}
+
+.Card__Image:hover .Card__ImageHover {
+  opacity: 1;
+}
+
+.Card hr {
+  border-color: var(--SoftBlue);
+}
+
+.Card__NftInfo .Card__NftInfo-Descripcion {
+  color: var(--SoftBlue);
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.Card__NftInfo .Card__NftInfo-Name {
+  font-size: 22px;
+}
+
+.Card__NftInfo-Name:hover {
+  color: var(--Cyan);
+}
+
+.Card__NftInfo .Card__NftInfo-Data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.GroupImgText {
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.Card-NftInfoValue,
+.Card-NftInfoDate {
+  gap: 0.5rem;
+}
+
+.Card-NftInfoValue img,
+.Card-NftInfoDate img {
+  width: 16px;
+}
+
+.Card-NftInfoValue p {
+  color: var(--Cyan);
+  font-size: 16px;
+}
+
+.Card-NftInfoDate p {
+  color: var(--SoftBlue);
+  font-size: 16px;
+}
+
+.Card-NftInfo-User {
+  padding-top: 0.5rem;
+}
+
+.Card-NftInfo-User img {
+  width: 42px;
+}
+
+.Card-NftInfo-User p {
+  font-size: 14px;
+  color: var(--SoftBlue);
+}
+
+.Card-NftInfo-User span {
+  font-size: 14px;
+}
+
+.Card-NftInfo-User span:hover {
+  color: var(--Cyan);
+}
+
+.attribution {
+  padding-top: 0.5rem;
+  font-size: 12px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+  font-size: 12px;
+}
