@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap");
+
+:root {
+  --White: hsl(0, 0%, 100%);
+  --LightGray: hsl(212, 45%, 89%);
+  --GrayishBlue: hsl(220, 15%, 55%);
+  --DarkBlue: hsl(218, 44%, 22%);
+}
+
+body {
+  background-color: var(--LightGray);
+  font-family: "Outfit", sans-serif;
+}
+
+.ContainerCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 290px;
+}
+
+.Card {
+  padding: 1rem;
+  background-color: var(--White);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.Card img {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.Card__Info {
+  text-align: center;
+}
+
+.Card__Info h2 {
+  font-weight: 700;
+  color: var(--DarkBlue);
+  font-size: 1.4rem;
+}
+
+.Card__Info p {
+  color: var(--GrayishBlue);
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.attribution {
+  margin-top: 0.5rem;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
