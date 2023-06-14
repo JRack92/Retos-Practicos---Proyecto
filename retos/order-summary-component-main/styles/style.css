@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap");
+
+:root {
+  --PaleBlue: hsl(225, 100%, 94%);
+  --PaleBlue50: hsla(225, 100%, 94%, 0.487);
+  --BrightBlue: hsl(245, 75%, 52%);
+
+  --Verypaleblue: hsl(225, 100%, 98%);
+  --DesaturatedBlue: hsl(224, 23%, 55%);
+  --DarkBlue: hsl(223, 47%, 23%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 500;
+
+  background-image: url("../images/pattern-background-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.CardContainer {
+  width: 337px;
+}
+
+.Card {
+  background-color: var(--Verypaleblue);
+
+  border-radius: 1rem;
+}
+
+.Card .Card__Banner {
+  width: 100%;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.Card .Card__Body {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem;
+}
+
+.Card__Body .Card__Title {
+  font-weight: 900;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+  color: var(--DarkBlue);
+  font-size: 1.7rem;
+}
+
+.Card__Body .Card__Info {
+  font-size: 16px;
+  line-height: 24px;
+
+  padding-left: 1.9rem;
+  padding-right: 1.9rem;
+
+  padding-bottom: 1.5rem;
+  color: var(--DesaturatedBlue);
+}
+
+.Card__Body .Card__Plan {
+  background-color: var(--PaleBlue50);
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.Card__Plan img {
+  width: 64px;
+}
+
+.Card__Plan .Card__Plan-Info {
+  text-align: left;
+  line-height: 24px;
+}
+
+.Card__Plan-Info .Plan__Type {
+  font-weight: 700;
+  color: var(--DarkBlue);
+}
+
+button {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--BrightBlue);
+  color: var(--Verypaleblue);
+  font-weight: 900;
+
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 1rem;
+}
+
+button:hover{
+    background-color: var(--DarkBlue);
+}
+
+a:hover p {
+    color: var(--DarkBlue);
+}
+
+.Card__Body .CancelOrder {
+  font-weight: 700;
+  padding-bottom: 1rem;
+}
+
+.attribution {
+  padding-top: 0.5rem;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 768px) {
+  body {
+    background-image: url("../images/pattern-background-desktop.svg");
+  }
+}
