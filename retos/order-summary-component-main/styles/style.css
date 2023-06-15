@@ -11,8 +11,8 @@
 }
 
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
@@ -34,6 +34,7 @@ body {
 
 .Card {
   background-color: var(--Verypaleblue);
+  /* background-color: var(--PaleBlue); */
 
   border-radius: 1rem;
 }
@@ -51,9 +52,9 @@ body {
 }
 
 .Card__Body .Card__Title {
+  margin: 0px;
   font-weight: 900;
-  padding-top: 1rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1rem;
   color: var(--DarkBlue);
   font-size: 1.7rem;
 }
@@ -64,8 +65,8 @@ body {
 
   padding-left: 1.9rem;
   padding-right: 1.9rem;
-
   padding-bottom: 1.5rem;
+
   color: var(--DesaturatedBlue);
 }
 
