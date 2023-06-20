@@ -77,9 +77,9 @@ main {
 
 .ProfileCard-UserPhoto {
   border-radius: 100%;
-  border-color: white;
   width: 100px;
   margin: 0 auto;
+  border: 0.25rem solid white;
 }
 
 .ProfileCard__UserData {
@@ -123,4 +123,24 @@ hr {
 .attribution a {
   color: hsl(228, 45%, 44%);
   font-size: 12px;
+}
+
+
+.DecoTop,
+.DecoBottom
+{
+  position: absolute;
+  z-index: -1;
+}
+
+.DecoTop {
+  top: 50%;
+  left: 50%;
+  transform: translate(-96%,-96%);
+}
+
+.DecoBottom {
+  top: -50%;
+  left: -50%;
+  transform: translate(29%,88%);
 }
