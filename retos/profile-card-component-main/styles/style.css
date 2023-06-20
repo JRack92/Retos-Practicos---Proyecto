@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+:root {
+  --DarkCyan: hsl(185, 75%, 39%);
+  --VeryDarkDesaturatedBlue: hsl(229, 23%, 23%);
+  --DarkGrayishBlue: hsl(227, 10%, 46%);
+
+  --DarkGray: hsl(0, 0%, 59%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Kumbh Sans", sans-serif;
+  /* color: var(--TransparentWhite); */
+}
+
+body {
+  background-color: var(--DarkCyan);
+
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+h2,
+h3 {
+  color: var(--VeryDarkDesaturatedBlue);
+  font-weight: 700;
+}
+
+p {
+  font-weight: 400;
+  color: var(--DarkGray);
+}
+
+main {
+  width: 90%;
+  margin: 2rem 0 2rem 0;
+}
+
+.ProfileCard {
+  border-radius: 1rem 1rem 1rem 1rem;
+  text-align: center;
+}
+
+.ProfileCard {
+  background-color: white;
+  margin: 0 auto;
+  position: relative;
+  width: 326px;
+  height: 400px;
+}
+
+.ProfileCard-Banner {
+  width: 100%;
+}
+
+.ProfileCard-Banner {
+  border-radius: 1rem 1rem 0 0;
+}
+
+.ProfileCard-User {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  transform: translateY(-50px);
+  height: 315px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.ProfileCard-UserPhoto {
+  border-radius: 100%;
+  border-color: white;
+  width: 100px;
+  margin: 0 auto;
+}
+
+.ProfileCard__UserData {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0 0 0;
+}
+
+.ProfileCard__UserData h3 {
+  font-weight: 700;
+}
+/* 
+.ProfileCard-City {
+  padding: 0.5rem 0 0.5rem 0;
+} */
+
+hr {
+  width: 100%;
+}
+
+.ProfileCard__UserMetri {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1rem 0 1rem 0;
+}
+
+.UserMetri_Data p {
+  padding-top: 0.1rem;
+  font-size: 0.6rem;
+}
+
+.attribution {
+  padding-top: 0.5rem;
+  font-size: 12px;
+  text-align: center;
+  color: black;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+  font-size: 12px;
+}
