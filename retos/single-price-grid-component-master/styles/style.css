@@ -53,6 +53,7 @@ button {
 
 main {
   width: 90%;
+  max-width: 610px;
   margin: 2rem 0 2rem 0;
 }
 
@@ -93,6 +94,11 @@ main {
   color: var(--GrayishBlue);
   font-size: 0.9rem;
   line-height: 1.4rem;
+}
+
+.SinglePriceData {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
 }
 
 .MonthlySubs {
@@ -139,7 +145,7 @@ main {
   color: white;
 }
 
-.WhyUs-Info{
+.WhyUs-Info {
   color: var(--LightGray);
   font-size: 1rem;
   font-weight: 400;
@@ -155,4 +161,11 @@ main {
 .attribution a {
   color: hsl(228, 45%, 44%);
   font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .SinglePriceData {
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
