@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap");
+
+:root {
+  /* Primary */
+  --Cyan: hsl(179, 62%, 43%);
+  --BrightYellow: hsl(71, 73%, 54%);
+
+  /* Neutral */
+  --LightGray: hsl(204, 43%, 93%);
+  --GrayishBlue: hsl(218, 22%, 67%);
+
+  --MonthlySubsColor: #2cb2b2;
+  --WhyUsColor: #4abebd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Karla", sans-serif;
+}
+
+body {
+  background-color: var(--GrayishBlue);
+
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-weight: 400;
+  color: var(--DarkGray);
+}
+
+button {
+  font-weight: 400;
+  border-color: transparent;
+}
+
+main {
+  width: 90%;
+  margin: 2rem 0 2rem 0;
+}
+
+.SinglePriceContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.JoinCommunity,
+.MonthlySubs,
+.WhyUs {
+  padding: 2rem;
+}
+
+.JoinCommunity-Title,
+.MonthlySubs-Title,
+.WhyUs-Title {
+  font-size: 1.5rem;
+  padding-bottom: 1.1rem;
+}
+
+.JoinCommunity {
+  background-color: white;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.JoinCommunity-Title {
+  color: var(--Cyan);
+}
+
+.JoinCommunity-Days {
+  color: var(--BrightYellow);
+  font-size: 1.1rem;
+  padding-bottom: 1.1rem;
+}
+
+.JoinCommunity-Info {
+  color: var(--GrayishBlue);
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+}
+
+.MonthlySubs {
+  background-color: var(--MonthlySubsColor);
+}
+
+.MonthlySubs-Title {
+  color: white;
+}
+
+.MonthlySubs-Price {
+  color: white;
+  font-weight: 700;
+  font-size: 2rem;
+  padding-bottom: 0.3rem;
+}
+
+.MonthlySubs-Price span {
+  font-weight: 400;
+  color: var(--LightGray);
+  vertical-align: middle;
+}
+
+.MonthlySubs-Info {
+  color: var(--LightGray);
+  padding-bottom: 2rem;
+}
+
+.MonthlySubs button {
+  width: 100%;
+  background-color: var(--BrightYellow);
+  color: white;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  padding: 0.8rem 0 0.8rem 0;
+}
+
+.WhyUs {
+  background-color: var(--WhyUsColor);
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.WhyUs-Title {
+  color: white;
+}
+
+.WhyUs-Info{
+  color: var(--LightGray);
+  font-size: 1rem;
+  font-weight: 400;
+  width: 77%;
+}
+
+.attribution {
+  padding-top: 0.5rem;
+  font-size: 12px;
+  text-align: center;
+  color: black;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+  font-size: 12px;
+}
