@@ -69,14 +69,14 @@ main p {
 section.Cards {
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(256px, 330px));
   place-content: center;
   grid-auto-rows: 1fr;
   /* grid-template-columns: ; */
 }
 
 article {
-  margin: 0 auto;
+  justify-self: center;
   background-color: white;
   border-radius: 10px;
   text-align: right;
@@ -106,6 +106,7 @@ article img {
 
 article.Supervisor {
   border-top-color: var(--Cyan);
+  justify-self: end;
 }
 
 article.TeamBuilder {
@@ -118,6 +119,7 @@ article.Karma {
 
 article.Calculator {
   border-top-color: var(--Blue);
+  justify-self: start;
 }
 
 .attribution {
