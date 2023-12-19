@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+:root {
+  /* Primary */
+  --Red: hsl(0, 78%, 62%);
+  --Cyan: hsl(180, 62%, 55%);
+  --Orange: hsl(34, 97%, 64%);
+  --Blue: hsl(212, 86%, 64%);
+
+  /* Neutral */
+  --VeryDarkBlue: hsl(234, 12%, 34%);
+  --GrayishBlue: hsl(229, 6%, 66%);
+  --VeryLightGray: hsl(0, 0%, 98%);
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  font-size: 13px;
+  background-color: var(--VeryLightGray);
+  text-align: center;
+}
+
+h2 {
+  color: var(--VeryDarkBlue);
+  font-weight: 200;
+}
+
+h1,
+h3 {
+  color: var(--VeryDarkBlue);
+  font-weight: 600;
+}
+
+p {
+  font-weight: 400;
+  color: var(--GrayishBlue);
+  line-height: 25px;
+}
+
+div#Container {
+  width: 80%;
+  margin: 60px auto;
+}
+
+main {
+  margin-bottom: 50px;
+}
+
+main h1 {
+  font-size: clamp(20px, 6vw, 40px);
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+main h2 {
+  font-size: clamp(20px, 6vw, 40px);
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+main p {
+  font-size: 15px;
+}
+
+section.Cards {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+  place-content: center;
+  grid-auto-rows: 1fr;
+  /* grid-template-columns: ; */
+}
+
+article {
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  text-align: right;
+  border-top-style: solid;
+  border-width: 4px;
+  padding: 20px;
+  box-shadow: 2px 5px 20px -8px var(--VeryDarkBlue);
+  min-width: 216px;
+  max-width: 290px;
+}
+
+article h3,
+article p {
+  text-align: left;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+article p {
+}
+
+article img {
+  width: 52px;
+  height: auto;
+  margin-top: 30px;
+}
+
+article.Supervisor {
+  border-top-color: var(--Cyan);
+}
+
+article.TeamBuilder {
+  border-top-color: var(--Red);
+}
+
+article.Karma {
+  border-top-color: var(--Orange);
+}
+
+article.Calculator {
+  border-top-color: var(--Blue);
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 1024px) {
+  section.Cards {
+    grid-template-areas:
+      ". TeamBuilder ."
+      "Supervisor TeamBuilder Calculator"
+      "Supervisor Karma Calculator"
+      ". Karma .";
+  }
+
+  article.Supervisor {
+    grid-area: Supervisor;
+  }
+
+  article.TeamBuilder {
+    grid-area: TeamBuilder;
+  }
+
+  article.Karma {
+    grid-area: Karma;
+  }
+
+  article.Calculator {
+    grid-area: Calculator;
+  }
+}
