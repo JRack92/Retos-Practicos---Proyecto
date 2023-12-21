@@ -23,13 +23,16 @@ h1 {
 
 body {
   background-color: var(--White);
+  position: relative;
 }
 
 div#Container {
   display: grid;
   /* place-items: center; */
   width: 80%;
-  margin: 60px auto;
+  margin: 0 auto;
+  padding: 60px 0;
+  /* margin: 60px auto; */
   max-width: 800px;
 }
 
@@ -127,6 +130,33 @@ article .User img {
   color: hsl(228, 45%, 44%);
 }
 
+#ImgBackgroundUp {
+  background-image: url("../images/bg-pattern-top-mobile.svg");
+  background-repeat: no-repeat;
+  width: 374px;
+  height: 232px;
+  position: absolute;
+  z-index: -99;
+
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+}
+
+#ImgBackgroundDown {
+  background-image: url("../images/bg-pattern-bottom-mobile.svg");
+  background-repeat: no-repeat;
+  width: 375px;
+  height: 503px;
+  position: absolute;
+
+  right: calc(50% - 375px) ;
+  top: 50%;
+  z-index: -99;
+}
+
 @media (min-width: 1024px) {
   div#InfoHeader {
     display: flex;
@@ -176,7 +206,6 @@ article .User img {
     flex-direction: row;
     gap: 10px;
     place-content: center;
-    /* max-width: 95%; */
     max-width: 350px;
   }
 
@@ -194,5 +223,19 @@ article .User img {
 
   section.Cards__Ranking article .Ranking {
     margin: 0;
+  }
+
+  #ImgBackgroundUp {
+    background-image: url("../images/bg-pattern-top-desktop.svg");
+    width: 584px;
+    height: 362px;
+  }
+
+  #ImgBackgroundDown {
+    background-image: url("../images/bg-pattern-bottom-desktop.svg");
+    width: 1085px;
+    height: 673px;
+
+  
   }
 }
